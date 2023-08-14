@@ -27,7 +27,7 @@ import { AlertModal } from "@/components/modals/alert-modal";
 const formSchema = z.object({
   name: z.string().min(2),
   value: z.string().min(1)
-});
+}).partial();
 
 type SizeFormValues = z.infer<typeof formSchema>;
 
@@ -124,20 +124,21 @@ export const SizeForm: React.FC<SizeFormProps> = ({
       <Separator />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Size Name</FormLabel>
-                <FormControl>
-                  <Input disabled={loading} placeholder="Size name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="grid grid-cols-3 gap-8">
+          <div className="md:grid md:grid-cols-3 gap-8">
+
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Size Name</FormLabel>
+                  <FormControl>
+                    <Input disabled={loading} placeholder="Size name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="value"
