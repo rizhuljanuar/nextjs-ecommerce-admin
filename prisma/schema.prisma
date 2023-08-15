@@ -133,7 +133,7 @@ model Color {
 model Image {
   id          String        @id @default(uuid())
   productId   String        // Foregin Key to Image
-  product     Product       @relation(fields: [productId], references: [id])
+  product     Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
   url         String        // URL of the Image
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
